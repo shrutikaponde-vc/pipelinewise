@@ -21,6 +21,7 @@ check_license() {
     PKG_NAME=`pip-licenses | grep "$1[[:space:]]" | awk '{print $1}'`
     PKG_VERSION=`pip-licenses | grep "$1[[:space:]]" | awk '{print $2}'`
     PKG_LICENSE=`pip-licenses --from mixed | grep "$1[[:space:]]" | awk '{for (i=1; i<=NF-2; i++) $i = $(i+2); NF-=2; print}'`
+    response=y
 
     # Any License Agreement that is not Apache Software License (2.0) has to be accepted
     MAIN_LICENSE="Apache Software License"
@@ -33,7 +34,7 @@ check_license() {
         if [[ $ACCEPT_LICENSES != "YES" ]]; then
             echo "  | You need to accept the connector's license agreement to proceed."
             echo "  |"
-            read -r -p "  | Do you accept the [$PKG_LICENSE] license agreement of $PKG_NAME connector? [y/N] " response
+            echo "  | Accept the [$PKG_LICENSE] license agreement of $PKG_NAME connector"
             case "$response" in
                 [yY][eE][sS]|[yY])
                     ;;
@@ -225,7 +226,6 @@ if [[ $NO_USAGE != "YES" ]]; then
     echo "To start CLI:"
     echo " $ source $VENV_DIR/pipelinewise/bin/activate"
     echo " $ export PIPELINEWISE_HOME=$PIPELINEWISE_HOME"
-
     echo " $ pipelinewise status"
     echo
     echo "--------------------------------------------------------------------------"
