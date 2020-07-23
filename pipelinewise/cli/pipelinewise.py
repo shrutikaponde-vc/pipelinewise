@@ -57,8 +57,8 @@ class PipelineWise:
         self.tap_run_log_file = None
 
         # Catch SIGINT and SIGTERM to exit gracefully
-        for sig in [signal.SIGINT, signal.SIGTERM]:
-            signal.signal(sig, self._exit_gracefully)
+        # for sig in [signal.SIGINT, signal.SIGTERM]:
+        #     signal.signal(sig, self._exit_gracefully)
 
     def send_alert(self,
                    message: str,
