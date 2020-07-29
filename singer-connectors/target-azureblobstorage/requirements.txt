@@ -1,0 +1,1 @@
+git+https://github.com/shrutikaponde-vc/target-azureblobstorage.git#egg=target-azureblobstorage

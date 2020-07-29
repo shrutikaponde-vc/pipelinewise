@@ -1,0 +1,22 @@
+---
+
+# ------------------------------------------------------------------------------
+# General Properties
+# ------------------------------------------------------------------------------
+id: "azure blob storage"                               # Unique identifier of the target
+name: "Azure blob storage Target connector"            # Name of the target
+type: "target-azureblobstorage"        # !! THIS SHOULD NOT CHANGE !!
+
+
+# ------------------------------------------------------------------------------
+# Target - Azure Blob Storage details
+# ------------------------------------------------------------------------------
+db_conn:
+  account_name: "<ACCOUNT_NAME>"                  # Azure storage account name- Plain string or vault encrypted
+  account_key: "<SECRET_ACCESS_KEY>"              # Secret access key - Plain string or vault encrypted
+  container_name: "<CONTAINER_NAME>"              # Container name
+
+  # Optional keys
+  #blob_prefix: "pipelinewise-exports/"           # (Default: None) A static prefix before the generated blob names
+  #username: "<USERNAME>"                         # Azure account username
+  #password: "<PASSWORD>"                         # Azure account password

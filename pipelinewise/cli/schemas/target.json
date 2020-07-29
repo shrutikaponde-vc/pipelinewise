@@ -113,13 +113,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "host",
-        "port",
-        "user",
-        "password",
-        "dbname"
-      ]
+      "required": ["host", "port", "user", "password", "dbname"]
     },
     "db_conn_target_s3_csv": {
       "type": "object",
@@ -143,11 +137,34 @@
           "type": "string"
         }
       },
-      "required": [
-        "aws_access_key_id",
-        "aws_secret_access_key",
-        "s3_bucket"
-      ]
+      "required": ["aws_access_key_id", "aws_secret_access_key", "s3_bucket"]
+    },
+    "db_conn_target_azureblobstorage": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "account_name": {
+          "type": "string"
+        },
+        "account_key": {
+          "type": "string"
+        },
+        "start_date": {
+          "type": "string"
+        },
+        "container_name:": {
+          "type": "string"
+        },
+        "blob_prefix:": {
+          "type": "string"
+        }
+      },
+      "required": ["account_name", "account_key", "container_name"]
     }
   },
   "type": "object",
@@ -155,9 +172,7 @@
     "id": {
       "type": "string",
       "not": {
-        "enum": [
-          "tmp"
-        ]
+        "enum": ["tmp"]
       }
     },
     "name": {
@@ -169,7 +184,8 @@
         "target-snowflake",
         "target-redshift",
         "target-postgres",
-        "target-s3-csv"
+        "target-s3-csv",
+        "target-azureblobstorage"
       ]
     },
     "db_conn": {
@@ -185,14 +201,12 @@
         },
         {
           "$ref": "#/definitions/db_conn_target_s3_csv"
+        },
+        {
+          "$ref": "#/definitions/db_conn_target_azureblobstorage"
         }
       ]
     }
   },
-  "required": [
-    "id",
-    "name",
-    "type",
-    "db_conn"
-  ]
+  "required": ["id", "name", "type", "db_conn"]
 }
